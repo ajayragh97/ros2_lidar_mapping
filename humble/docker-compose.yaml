@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  ros2_humble:
+    container_name: humble
+    image: humble:latest
+    privileged: true
+    tty: true
+    networks:
+      - ros2_network
+    volumes:
+      - /home/ajay/ros2_ws:/root/ros2_ws:rw
+      - /dev:/dev
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /tmp/.docker.xauth:/tmp/.docker.xauth:rw
+    device_cgroup_rules:
+      - 'c 81:* rmw'
+      - 'c 189:* rmw'
+    environment:
+      - DISPLAY=unix${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - ROS_DOMAIN_ID=1
+
+networks:
+  ros2_network:
+    driver: bridge
