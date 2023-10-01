@@ -9,7 +9,7 @@ services:
     networks:
       - ros2_network
     volumes:
-      - /home/ajay/ros2_ws:/root/ros2_ws:rw
+      - /home/ajay/ros2_ws/src/lidar_mapping:/home/ros2_ws/src/lidar_mapping:rw
       - /dev:/dev
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - /tmp/.docker.xauth:/tmp/.docker.xauth:rw
